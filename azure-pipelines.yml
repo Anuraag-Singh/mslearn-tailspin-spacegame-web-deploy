@@ -81,7 +81,7 @@ stages:
       vmImage: 'ubuntu-16.04'
     environment: dev
     variables:
-    - group: Release
+    - group: web-release-multistage-vg
     strategy:
       runOnce:
         deploy:
@@ -91,7 +91,6 @@ stages:
           - task: AzureWebApp@1
             displayName: 'Azure App Service Deploy: website'
             inputs:
-              azureSubscription: 'Free Trial(a9e3db2f-427e-4d52-948f-83aa5e690136)'
-              appType: 'webAppLinux'
+              azureSubscription: 'Resource Manager - Tailspin - Space Game'
               appName: '$(WebAppNameDev)'
               package: '$(Pipeline.Workspace)/drop/$(buildConfiguration)/*.zip'
